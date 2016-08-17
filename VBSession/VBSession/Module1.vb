@@ -1,13 +1,49 @@
 ﻿Module Module1
 
     Sub Main()
+        'Dim myCatObj1 As New Cat
+
+        Dim mySound As ISound ' handl;e to the interface
+        mySound = New Cat
+        CType(mySound, Cat).Age = 2
+
+
+
+        Dim animalObj As Animal 'Handle of the base class
+        Dim dogObj As Dog
+
+        dogObj = New Dog 'creating object of child class
+        animalObj = dogObj ' handle of the base class that points to the object of child class
+
+        CType(animalObj, Dog).Breed = "Boxer"
+
+        Dim dogObj2 As Dog
+        Dim animalObj2 As Animal
+
+        animalObj2 = New Animal
+        dogObj2 = animalObj2 ' generic to specific -- this is illegeal
+
         ' objects of a class
         ' instantiation of object of a class
-        Dim animalObj As New Animal
-        animalObj.Name = "Bruno"
-        Console.WriteLine(animalObj.Name())
-        animalObj.Age = "2"
-        Console.WriteLine(animalObj.Breed())
+        'Dim animalObj As New Animal
+        'animalObj.Name = "Bruno"
+        'Console.WriteLine(animalObj.Name())
+        'animalObj.Age = "2"
+        'Console.WriteLine(animalObj.Breed())
+
+        ' Dim animalObj As New Animal
+        ' animalObj.Walk()
+
+        'Dim dogObj As New Dog
+        'dogObj.Breed = "Golden Retriver"
+        'dogObj.Walk()
+        'Dim animalObj As Animal
+        'animalObj = New Animal("new name of animal")
+
+        'Dim animalObj1 As New Animal("new name of animal")
+
+        'Dim catObj As New Cat
+        ' catObj.Walk()
 
         ' animalObj.SetName("Bruno")
         ' Dim animalName As String = animalObj.GetName()

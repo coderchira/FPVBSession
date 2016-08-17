@@ -1,6 +1,9 @@
-﻿Public Class Animal
+﻿Imports VBSession
+
+Public Class Animal
+    Implements ISound
+
     Private _name As String
-    Private _breed As String
     Private _age As String
 
     'Function GetName() As String
@@ -20,18 +23,38 @@
         End Set
     End Property
 
-    Public ReadOnly Property Breed() As String
-        Get
-            Return _breed
-        End Get
-
-    End Property
-
-
     Public WriteOnly Property Age() As String
 
         Set(ByVal value As String)
             _age = value
         End Set
     End Property
+
+    Public Property Sound As String Implements ISound.Sound
+        Get
+            Throw New NotImplementedException()
+        End Get
+        Set(value As String)
+            Throw New NotImplementedException()
+        End Set
+    End Property
+
+    Overridable Sub Walk()
+        Console.WriteLine("This is the animal walking!")
+    End Sub
+
+    Sub New()
+        'Own implementation
+        _name = "New Animal"
+        Console.WriteLine("This is the Animal class's constructor")
+    End Sub
+
+    Sub New(newname As String)
+        _name = newname
+        Console.WriteLine("This is the Animal class's parameterized constructor")
+    End Sub
+
+    Public Sub MakeSound() Implements ISound.MakeSound
+        Throw New NotImplementedException()
+    End Sub
 End Class
